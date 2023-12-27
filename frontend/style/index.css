@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+header{
+    background-color: black;
+    padding: 15px 30px;
+}
+
+header .logo a{
+    color: greenyellow;
+    font-size: 34px;
+    cursor: pointer;
+}
+
+header .navigation a{
+    color: goldenrod;
+    font-size: 24px;
+    padding: 0px 14px;
+}
+
+.SignupForm,.loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 91vh;
+}
+
+.SignupForm #form,.loginForm #form{
+    border: 1px solid black;
+    padding: 60px;
+}
+
+.SignupForm #form input,.loginForm #form input{
+    display: block;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    margin: 15px 30px;
+    font-size: 18px;
+}
+.SignupForm #form #role{
+    width: 100%;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.SignupForm #form #signup,.loginForm #form #login{
+    cursor: pointer;
+    background-color: pink;
+    width: 75%;
+    transition: all ease-in-out 0.5s;
+}
+
+
+.SignupForm #form #signup:hover,.loginForm #form #login:hover{
+    background-color: black;
+    color: goldenrod;
+}

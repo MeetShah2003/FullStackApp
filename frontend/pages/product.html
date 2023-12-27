@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="../style/index.css">
+    <style>
+        img{
+            width: 300px;
+            height: 350px;
+        }
+        .parent-box{
+            margin: 50px;
+        }
+        .parent-box #product{
+            cursor: pointer;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+        }
+        .parent-box #product #buy{
+            padding: 15px 30px;
+            cursor: pointer;
+            border: none;
+            background-color: pink;
+            border-radius: 15px;
+            transition: all ease-in-out 0.5s;
+        }
+        .parent-box #product #buy:hover{
+            background-color: black;
+            color: goldenrod;
+        }
+    </style>
+</head>
+<body>    
+    <div id="navbar"></div>
+
+    <div class="parent-box">
+        <div id="product"></div>
+    </div>
+</body>
+<script type="module" src="../js/nav.js"></script>
+<script>
+
+    const displayProduct=(data)=>{
+        document.getElementById("product").innerHTML="";
+        data.map((ele)=>{
+            let img=document.createElement("img");
+            img.src=ele.img;
+            let title=document.createElement("h2");
+            title.innerHTML=ele.title;
+            let description=document.createElement("p");
+            description.innerHTML=ele.description;
+            let size=document.createElement("h5");
+            size.innerHTML=ele.size;
+            let price=document.createElement("h4");
+            price.innerHTML=`₹${ele.price}`;
+            let color=document.createElement("h3");
+            color.innerHTML=ele.color;
+            let btn1=document.createElement("button");
+            btn1.innerHTML="Buy Now";
+            btn1.setAttribute("id","buy")
+            let div=document.createElement("div");
+            div.append(img,title,description,size,price,color,btn1);
+            document.getElementById("product").append(div);
+        });
+    };
+
+    const getProducts=()=>{
+        fetch("http://127.0.0.1:8090/product/home")
+        .then((res)=>res.json())
+        .then((data)=>displayProduct(data))
+        .catch((err)=>console.log(err.message));
+    };
+    getProducts();
+</script>
+</html>
